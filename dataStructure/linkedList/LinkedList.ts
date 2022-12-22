@@ -1,11 +1,6 @@
-interface INode {
+export class MyNode {
     value: any;
-    next: null | INode;
-}
-
-class Node implements INode {
-    value: any;
-    next: Node | null;
+    next: MyNode | null;
 
     constructor(value) {
         this.value = value;
@@ -14,8 +9,8 @@ class Node implements INode {
 }
 
 export default class LinkedList {
-    head: Node;
-    tail: Node;
+    head: MyNode;
+    tail: MyNode;
     length: number;
 
     constructor(value) {
@@ -29,7 +24,7 @@ export default class LinkedList {
 
     // O(1)
     append(value) {
-        const newNode = new Node(value);
+        const newNode = new MyNode(value);
         this.tail.next = newNode;
         this.tail = newNode;
         this.length++;
@@ -37,7 +32,7 @@ export default class LinkedList {
 
     // O(1)
     prepend(value) {
-        const newNode = new Node(value);
+        const newNode = new MyNode(value);
         newNode.next = this.head;
         this.head = newNode;
         this.length++;
@@ -63,7 +58,7 @@ export default class LinkedList {
     }
 
     // O(n)
-    get(index: number): Node | undefined {
+    get(index: number): MyNode | undefined {
         if (index > this.length - 1) {
             console.error("index out of range");
             return;
@@ -97,7 +92,7 @@ export default class LinkedList {
         }
 
         // this is where O(n) happens
-        const prevNode = this.get(index - 1) as Node;
+        const prevNode = this.get(index - 1) as MyNode;
         const nextNode = prevNode.next!.next;
 
         prevNode.next = nextNode;
