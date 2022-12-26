@@ -8,7 +8,7 @@ class Node implements INode {
     prev: Node | null;
     next: Node | null;
 
-    constructor(value, prev: Node | null) {
+    constructor(value: any, prev: Node | null) {
         this.value = value;
         this.prev = prev;
         this.next = null;
@@ -20,7 +20,7 @@ export default class DoublyLinkedList {
     tail: Node;
     length: number;
 
-    constructor(value) {
+    constructor(value: any) {
         this.head = {
             value: value,
             next: null,
@@ -31,7 +31,7 @@ export default class DoublyLinkedList {
     }
 
     // O(1)
-    append(value) {
+    append(value: any) {
         const tailNode = this.tail;
         const newNode = new Node(value, tailNode);
         this.tail.next = newNode;
@@ -40,7 +40,7 @@ export default class DoublyLinkedList {
     }
 
     // O(1)
-    prepend(value) {
+    prepend(value: any) {
         const newNode = new Node(value, null);
         const nextNode = this.head;
         newNode.next = this.head;
@@ -69,7 +69,7 @@ export default class DoublyLinkedList {
     }
 
     // O(n)
-    insert(index: number, value) {
+    insert(index: number, value: any) {
         if (index === 0) {
             this.prepend(value);
             return;
